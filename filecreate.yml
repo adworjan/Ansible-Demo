@@ -1,0 +1,10 @@
+- name: Create new file with text 
+  hosts: all
+  tasks: 
+    - name: New File Creation
+      lineinfile:
+        path: "/home/adworjan/{{ filename }}"
+        line: "{{ linetext }}"
+        create: yes
+        
+
