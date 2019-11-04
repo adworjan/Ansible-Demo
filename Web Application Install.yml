@@ -3,5 +3,5 @@
   tasks:
     - name: Install Tomcat
       yum:
-        name: Tomcat
+        name: tomcat
         state: latest
