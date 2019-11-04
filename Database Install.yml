@@ -1,0 +1,7 @@
+- name: Demo Database Install
+  hosts: all
+  tasks:
+    - name: Install mysql DB
+      yum:
+        name: mysql
+        state: latest

@@ -1,0 +1,7 @@
+- name: Demo Web Application Install
+  hosts: all
+  tasks:
+    - name: Install Tomcat
+      yum:
+        name: Tomcat
+        state: latest
