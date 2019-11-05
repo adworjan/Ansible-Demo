@@ -22,7 +22,7 @@
       name: nginx
       state: started
 
-  - name: Check that you can connect (GET) to a page and it returns a status 200
+  - name: Check that you can connect to the index page and that Hello is in the contents
     uri:
       url: https://192.168.56.100/index.html
       validate_certs: no
