@@ -24,5 +24,8 @@
 
   - name: Check that you can connect (GET) to a page and it returns a status 200
     uri:
-      url: https://192.168.56.100
+      url: https://192.168.56.100/index.html
       validate_certs: no
+      return_content: yes
+    register: this
+    failed_when: "'Hello' not in this.content"
