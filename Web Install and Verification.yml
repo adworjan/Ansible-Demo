@@ -1,4 +1,4 @@
-- name: Install nginx and verify service is started
+- name: Install nginx, insert an index page, verify service is started and that the index page works
   hosts: all
 
   tasks:
