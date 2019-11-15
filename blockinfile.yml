@@ -11,7 +11,7 @@
           {{ inventory_hostname }}
           {{ ansible_date_time }}
           {{ item }}
-        delegate_to: localhost
+      delegate_to: localhost
         #loop:
       loop:
         - passwd
