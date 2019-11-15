@@ -8,7 +8,7 @@
         insertbefore: BOF
         firstmatch: yes
         create: yes
-        line: '{{ inventory_hostname }}'
+        line: '{{ inventory_hostname }}\n{{ ansible_date_time.date }}\n{{ item }}'
       loop:
         - passwd
         - login.defs
