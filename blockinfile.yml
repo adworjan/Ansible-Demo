@@ -4,7 +4,7 @@
     - name: Block in file Test
       blockinfile:
         path: /var/lib/awx/projects/{{ item }}.txt
-        insertbefore: BOF
+        insertbefore: "^."
         marker: ""
         create: yes
         block: |
