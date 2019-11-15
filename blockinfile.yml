@@ -1,7 +1,16 @@
 - name: Block in file test
   hosts: all
   tasks:
-    - name: Block in file Test
+    - name: Block in file remove
+      blockinfile:
+        path: /var/lib/awx/projects/{{ item }}.txt
+        state: absent
+      loop:
+        - passwd
+        - login.defs
+        - sudoers
+
+    - name: Block in file add
       blockinfile:
         path: /var/lib/awx/projects/{{ item }}.txt
         insertbefore: "^."
