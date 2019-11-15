@@ -1,0 +1,19 @@
+- name: Block in file test
+  hosts: all
+
+  tasks:
+    - name: Block in file Test
+      blockinfile:
+        path: /var/lib/awx/projects/{{ item }}.txt
+        insertbefore: BOF
+        marker: ""
+        block: |
+          {{inventory_hostname}}
+          {{DTE2}}
+          {{ item }}
+        delegate_to: localhost
+        #loop:
+        with_items:
+          - passwd
+          - login.defs
+          - sudoers
