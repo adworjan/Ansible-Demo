@@ -9,7 +9,7 @@
         create: yes
         block: |
           {{ inventory_hostname }}
-          {{ ansible_date_time }}
+          {{ ansible_date_time.date }}
           {{ item }}
         #loop:
       loop:
