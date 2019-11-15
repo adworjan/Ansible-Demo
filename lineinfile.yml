@@ -1,0 +1,15 @@
+- name: Block in file test
+  hosts: all
+  tasks:
+    
+    - name: Block in file add
+      lineinfile:
+        path: /var/lib/awx/projects/{{ item }}.txt
+        insertbefore: BOF
+        firstmatch: yes
+        create: yes
+        line: '{{ inventory_hostname }}'
+      loop:
+        - passwd
+        - login.defs
+        - sudoers
