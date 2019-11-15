@@ -3,7 +3,7 @@
   tasks:
     
     - name: Block in file add
-      lineinfileinfile:
+      lineinfile:
         path: /var/lib/awx/projects/{{ item }}.txt
         insertbefore: BOF
         firstmatch: yes
