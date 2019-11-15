@@ -2,13 +2,13 @@
   hosts: all
   tasks:
     
-    - name: Block in file add
+    - name: Line in file add
       lineinfile:
         path: /var/lib/awx/projects/{{ item }}.txt
         insertbefore: BOF
         firstmatch: yes
         create: yes
-        line: '{{ inventory_hostname }}\n{{ ansible_date_time.date }}\n{{ item }}'
+        line: '{{ inventory_hostname }} {{ ansible_date_time.date }} {{ item }}'
       loop:
         - passwd
         - login.defs
