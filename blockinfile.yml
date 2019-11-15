@@ -13,7 +13,7 @@
           {{ item }}
         delegate_to: localhost
         #loop:
-        with_items:
+        loop:
           - passwd
           - login.defs
           - sudoers
