@@ -8,8 +8,8 @@
         insertbefore: BOF
         marker: ""
         block: |
-          {{inventory_hostname}}
-          {{DTE2}}
+          {{ inventory_hostname }}
+          {{ ansible_date_time }}
           {{ item }}
         delegate_to: localhost
         #loop:
