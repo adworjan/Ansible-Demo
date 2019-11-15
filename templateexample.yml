@@ -1,0 +1,16 @@
+- name: Line in file test
+  hosts: all
+  vars:
+    user_data: "{{ lookup('file', /var/lib/awx/projects/passwd.txt) }}"
+    inventory_source: "{{ inventory_hostname }}"
+    date_time: "{{ ansible_date_time.date }}"
+    
+  tasks:
+    - name: Line in file add
+      template:
+        src: audit.j2
+        dest: /var/lib/awx/projects/demoproject/{{ item }}.txt
+      loop:
+        - passwd
+        - login.defs
+        - sudoers
