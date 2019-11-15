@@ -7,7 +7,6 @@
         path: /var/lib/awx/projects/{{ item }}.txt
         insertbefore: BOF
         firstmatch: yes
-        marker: ""
         create: yes
         line: '{{ inventory_hostname }}'
       loop:
