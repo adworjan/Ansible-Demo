@@ -1,12 +1,12 @@
 - name: Block in file test
   hosts: all
-
   tasks:
     - name: Block in file Test
       blockinfile:
         path: /var/lib/awx/projects/{{ item }}.txt
         insertbefore: BOF
         marker: ""
+        create: yes
         block: |
           {{ inventory_hostname }}
           {{ ansible_date_time }}
