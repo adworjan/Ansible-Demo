@@ -9,11 +9,11 @@
     - name: Debug
       debug:
         msg: "{{ playbook_dir }}"
-    - name: Line in file add
-      template:
-        src: audit.j2
-        dest: /var/lib/awx/projects/demoproject/{{ item }}.txt
-      loop:
-        - passwd
-        - login.defs
-        - sudoers
+    #- name: Line in file add
+    #  template:
+    #    src: audit.j2
+    #    dest: /var/lib/awx/projects/demoproject/{{ item }}.txt
+    #  loop:
+    #    - passwd
+    #    - login.defs
+    #    - sudoers
