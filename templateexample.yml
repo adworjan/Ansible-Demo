@@ -1,7 +1,7 @@
 - name: Line in file test
   hosts: all
   vars:
-    user_data: "{{ lookup('file', '/tmp/test.txt') }}"
+    user_data: "{{ lookup('file', 'test.txt') }}"
     inventory_source: "{{ inventory_hostname }}"
     date_time: "{{ ansible_date_time.date }}"
     
