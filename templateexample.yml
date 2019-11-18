@@ -6,14 +6,11 @@
     date_time: "{{ ansible_date_time.date }}"
     
   tasks:
-    - name: Debug
-      debug:
-        msg: "{{ playbook_dir }}"
-    #- name: Line in file add
-    #  template:
-    #    src: audit.j2
-    #    dest: /var/lib/awx/projects/demoproject/{{ item }}.txt
-    #  loop:
-    #    - passwd
-    #    - login.defs
-    #    - sudoers
+    - name: Template in file add
+      template:
+        src: audit.j2
+        dest: /var/lib/awx/projects/demoproject/{{ item }}.txt
+      loop:
+        - passwd
+        - login.defs
+        - sudoers
