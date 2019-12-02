@@ -1,5 +1,5 @@
 - name: Create an incident in ServiceNow
-  hosts: localhost
+  hosts: all
   gather_facts: no
   connection: local
   
