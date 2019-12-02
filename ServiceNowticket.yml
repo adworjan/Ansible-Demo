@@ -6,9 +6,6 @@
   tasks: 
   - name: Create an incident in ServiceNow
     snow_record:
-      username: '{{ lookup("env", "SN_USERNAME") }}'
-      password: '{{ lookup("env", "SN_PASSWORD") }}'
-      instance: '{{ lookup("env", "SN_INSTANCE") }}'
       state: present
       data:
         short_description: "This is a test incident opened by Ansible"
