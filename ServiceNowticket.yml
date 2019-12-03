@@ -8,11 +8,11 @@
     snow_record:
       state: present
       data:
-        short_description: "This is a test incident opened by Ansible"
+        short_description: "{{ incident_description }}"
         severity: 2
         priority: 2
         u_operating_system: "{{ ansible_lsb.description }}"
-        u_ip_address: "{{ ansible_eth0.ipv4.address }}"
+        u_ip_address: "{{ ansible_eth1.ipv4.address }}"
     register: new_incident
 
   - debug: 
