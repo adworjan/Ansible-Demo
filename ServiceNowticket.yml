@@ -12,7 +12,7 @@
         severity: 2
         priority: 2
         u_operating_system: "{{ ansible_lsb.description }}"
-        u_ip_address: "{{ ipv4.address }}"
+        u_ip_address: "{{ ansible_eth0.ipv4.address }}"
     register: new_incident
 
   - debug: 
