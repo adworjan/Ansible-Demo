@@ -1,6 +1,6 @@
 - name: Create an incident in ServiceNow
   hosts: all
-  gather_facts: no
+  gather_facts: yes
   connection: local
   
   tasks: 
