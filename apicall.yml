@@ -1,0 +1,18 @@
+---
+- name: POST to Tower API
+  hosts: localhost
+  vars:
+    job_template_id: 388
+ 
+  tasks:
+    - name: Create an incident ticket in ServiceNow
+      uri:
+        url: https://192.168.56.100/api/v2/job_templates/{{ job_template_id }}/launch/
+        method: POST
+        user: admin
+        password: $PASSWORD
+        status_code: 202
+        body: 
+          extra_vars:
+            incident_description: "This is made via an API call"
+        body_format: json
