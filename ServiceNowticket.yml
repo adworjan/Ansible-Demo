@@ -11,6 +11,8 @@
         short_description: "This is a test incident opened by Ansible"
         severity: 2
         priority: 2
+        u_operating_system: "{{ ansible_lsb.description }}"
+        u_ip_address: "{{ ipv4.address }}"
     register: new_incident
 
   - debug: 
