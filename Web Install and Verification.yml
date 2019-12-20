@@ -16,11 +16,6 @@
       src: index.html.j2
       dest: /usr/share/nginx/html/index.html
 
-  - name: Ensure NGiNX is started
-    service:
-      name: nginx
-      state: started
-
   - name: Check that you can connect to the index page and that Hello is in the contents
     uri:
       url: https://192.168.56.100/index.html
