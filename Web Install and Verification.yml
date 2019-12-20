@@ -15,10 +15,10 @@
       src: index.html.j2
       dest: /usr/share/nginx/html/index.html
 
-  - name: Restart NGiNX
+  - name: Ensure NGiNX is started
     service:
       name: nginx
-      state: restarted
+      state: started
 
   - name: Check that you can connect to the index page and that Hello is in the contents
     uri:
