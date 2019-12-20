@@ -4,6 +4,7 @@
     - name: Block in file Test
       blockinfile:
         path: /etc/nginx/nginx.conf
+        regex: "static; }"
         insertafter: "static; }"
         marker: ""
         block: |
