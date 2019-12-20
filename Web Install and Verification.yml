@@ -29,7 +29,8 @@
     register: this
     failed_when: "'Hello' not in this.content"
 
-handlers:
-  - name: nginx_running
-      service: nginx
-      state: started
+  handlers:
+    - name: nginx_running
+      service:
+        name: nginx
+        state: started
