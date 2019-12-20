@@ -2,7 +2,7 @@
   hosts: all
 
   tasks:
-  - name: Add epel-release repo
+  - name: Add epel-release repo and install nginx
     yum:
       name: "{{ item }}"
       state: present
@@ -15,10 +15,10 @@
       src: index.html.j2
       dest: /usr/share/nginx/html/index.html
 
-  - name: Start NGiNX
+  - name: Restart NGiNX
     service:
       name: nginx
-      state: started
+      state: restarted
 
   - name: Check that you can connect to the index page and that Hello is in the contents
     uri:
