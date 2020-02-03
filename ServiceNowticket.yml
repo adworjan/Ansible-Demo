@@ -9,10 +9,9 @@
       state: present
       data:
         short_description: "{{ incident_description }}"
-        urgency: "2"
-        impact: "1"
-        severity: "2"
-        priority: "2"
+        urgency: "{{ sn_urgency }}"
+        impact: "{{ sn_impact }}"
+        priority: "{{ sn_priority }}"
         u_operating_system: "{{ ansible_lsb.description }}"
         u_ip_address: "{{ ansible_eth1.ipv4.address }}"
     register: new_incident
