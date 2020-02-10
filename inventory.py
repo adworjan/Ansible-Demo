@@ -17,17 +17,19 @@ def inventory():
 
     return {
         'all': {
-            'hosts': [ip_address],
-            'vars': {},
+            'children': [
+            'ungrouped' ]
+        },
+        'ungrouped':{
+            'hosts':['local_mac']
         },
         '_meta': {
             'hostvars': {
-                ip_address: {
-                    'ansible_ssh_user': 'pi',
+                'local_mac': {
+                    'ansible_host': ip_address,
                 }
             },
         },
-        'pi': [ip_address]
     }
 
 
