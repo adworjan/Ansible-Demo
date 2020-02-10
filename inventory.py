@@ -13,26 +13,25 @@ def main():
 
 
 def inventory():
-    ip_address = find_local()
+    ip_address = find_pi()
+
     return {
-      '_meta': {
-            'hostvars': {
-                'local_mac': {
-                    'ansible_host': [ip_address]
-                             }
-                         {
-                 },
         'all': {
-            'children': [
-            'ungrouped' ]
+            'hosts': [ip_address],
+            'vars': {},
         },
-      'ungrouped': {
-            'hosts': [
-            'local_mac' ]
-        }
+        '_meta': {
+            'hostvars': {
+                ip_address: {
+                    'ansible_ssh_user': 'pi',
+                }
+            },
+        },
+        'pi': [ip_address]
     }
 
-def find_local():
+
+def find_pi():
     for ip in all_local_ips():
         if port_22_is_open(ip):
             return ip
