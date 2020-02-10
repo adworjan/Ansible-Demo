@@ -26,7 +26,7 @@ def inventory():
         '_meta': {
             'hostvars': {
                 'local_mac': {
-                    'ansible_host': ip_address
+                    'ansible_host': '192.168.1.96'
                 }
             }
         },
