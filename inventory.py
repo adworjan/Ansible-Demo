@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+ho#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 from __future__ import (absolute_import, division, print_function,
                         unicode_literals)
@@ -16,17 +16,20 @@ def inventory():
     ip_address = find_local()
     return {
         'all': {
-            'hosts': [ip_address],
-            'vars': {},
+            'children': [
+            'ungrouped' ]
+        },
+      'ungrouped': {
+            'hosts': [
+            'local_mac' ]
         },
         '_meta': {
             'hostvars': {
-                ip_address: {
-                    'ansible_ssh_user': 'adworjan',
+                'local_mac': {
+                    'ansible_host': ip_address
                 }
             },
         },
-        'local_mac': [ip_address]
     }
 
 
