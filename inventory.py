@@ -15,6 +15,13 @@ def main():
 def inventory():
     ip_address = find_local()
     return {
+      '_meta': {
+            'hostvars': {
+                'local_mac': {
+                    'ansible_host': [ip_address]
+                             }
+                         {
+                 },
         'all': {
             'children': [
             'ungrouped' ]
@@ -22,16 +29,8 @@ def inventory():
       'ungrouped': {
             'hosts': [
             'local_mac' ]
-        },
-        '_meta': {
-            'hostvars': {
-                'local_mac': {
-                    'ansible_host': [ip_address]
-                }
-            }
-        },
+        }
     }
-
 
 def find_local():
     for ip in all_local_ips():
