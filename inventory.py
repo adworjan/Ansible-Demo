@@ -1,4 +1,4 @@
-ho#!/usr/bin/env python
+#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 from __future__ import (absolute_import, division, print_function,
                         unicode_literals)
@@ -26,7 +26,7 @@ def inventory():
         '_meta': {
             'hostvars': {
                 'local_mac': {
-                    'ansible_host': '192.168.1.96'
+                    'ansible_host': ip_address
                 }
             }
         },
