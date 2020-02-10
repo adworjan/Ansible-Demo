@@ -28,7 +28,7 @@ def inventory():
                 'local_mac': {
                     'ansible_host': ip_address
                 }
-            },
+            }
         },
     }
 
