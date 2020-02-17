@@ -9,6 +9,7 @@
       state: present
       data:
         short_description: "{{ incident_description }}"
+        caller_id: "System Administrator"
         urgency: "{{ sn_urgency }}"
         impact: "{{ sn_impact }}"
         u_operating_system: "{{ ansible_lsb.description }}"
