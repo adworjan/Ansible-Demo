@@ -4,5 +4,4 @@
   tasks: 
     - name: Debug
       debug:  
-        var: ansible_user
-        verbosity: 2
+        msg: "The current user is {{ ansible_user }}"
