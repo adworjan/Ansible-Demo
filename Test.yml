@@ -1,0 +1,7 @@
+- name: Test
+  hosts: all
+  tasks: 
+    - name: Debug
+      debug:  
+        var: ansible_user
+        verbosity: 2
