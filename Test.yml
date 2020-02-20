@@ -4,7 +4,7 @@
   tasks: 
     - name: Debug
       debug:  
-        msg: "The current user is {{ remote_user }}"
+        msg: "The current user is {{ ansible_user }}"
 
     - name: Test
       ping:
