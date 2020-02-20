@@ -6,6 +6,11 @@
       debug:  
         msg: "The current user is {{ ansible_user }}"
 
-    - name: Test
+    - name: Ping Test
       ping:
+
+    - name: yum test
+      yum:
+        name: wget
+        state: present
           
