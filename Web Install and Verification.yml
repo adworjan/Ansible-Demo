@@ -11,7 +11,7 @@
     - nginx
     notify: nginx_running
 
-  - name: Insert Index Page
+  - name: Insert Index Page for webpage
     template:
       src: index.html.j2
       dest: /usr/share/nginx/html/index.html
