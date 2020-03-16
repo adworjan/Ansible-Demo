@@ -1,6 +1,6 @@
 ---
 
-- src: https://{{ scm_username }}:{{ scm_password }}@github.com/adworjan/role.git
+- src: https://{{scm_username}}:{{scm_password}}@github.com/adworjan/role.git
   version: master
   scm: git
   name: role1
