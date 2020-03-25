@@ -1,6 +1,6 @@
 - name: Update a ticket in ServiceNow
   hosts: all
-  gather_facts: yes
+  gather_facts: no
   connection: local
   
   tasks: 
