@@ -18,7 +18,6 @@
     cluster: Gigahype
     template: RHEL77_ShadowMan_V3
     vm_memory: 4GiB
-    vm_name: test-vm01
   tasks:
     - name: Create and run VM from template
       ovirt_vm:
@@ -28,7 +27,7 @@
         cluster: "{{ cluster }}"
         memory: "{{vm_memory}}"
         high_availability: true
-        state: running
+        state: "{{ vm_state }}"
         wait: yes
   post_tasks:
     - name: Logout from oVirt
