@@ -1,0 +1,39 @@
+---
+- name: Create VM on RHV
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  pre_tasks:
+    - name: Login to oVirt
+      ovirt_auth:
+        hostname: "{{ rhvm_fqdn }}"
+        username: "{{ rhvm_user }}"
+        password: "{{ rhvm_password }}"
+        ca_file: "{{ rhvm_cafile | default(omit) }}"
+        insecure: "{{ rhvm_insecure | default(true) }}"
+      tags:
+        - always
+  vars:
+    datacenter: Gigahype
+    cluster: Gigahype
+    template: RHEL77_ShadowMan_V3
+    vm_memory: 4GiB
+    vm_name: test-vm01
+  tasks:
+    - name: Create and run VM from template
+      ovirt_vm:
+        auth: "{{ ovirt_auth }}"
+        name: "{{ vm_name }}"
+        template: "{{ template }}"
+        cluster: "{{ cluster }}"
+        memory: "{{vm_memory}}"
+        high_availability: true
+        state: running
+        wait: yes
+  post_tasks:
+    - name: Logout from oVirt
+      ovirt_auth:
+        state: absent
+        ovirt_auth: "{{ ovirt_auth }}"
+      tags:
+        - always
