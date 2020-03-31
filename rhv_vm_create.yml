@@ -19,16 +19,16 @@
     template: RHEL77_ShadowMan_V3
     vm_memory: 4GiB
   tasks:
-
-
-    - name: get nic info
-      ovirt_nic_info:
+    - name: Create and run VM from template
+      ovirt_vm:
         auth: "{{ ovirt_auth }}"
-        vm: "{{ vm_name }}"
-        name: eth*
-      register: result
-    - debug:
-        msg: "{{ result }}"
+        name: "{{ vm_name }}"
+        template: "{{ template }}"
+        cluster: "{{ cluster }}"
+        memory: "{{vm_memory}}"
+        high_availability: true
+        state: "{{ vm_state }}"
+        wait: yes
 
     - name: Add set_stats to host 'new_host'
       set_stats:
