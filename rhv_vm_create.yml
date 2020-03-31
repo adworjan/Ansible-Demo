@@ -29,6 +29,10 @@
         high_availability: true
         state: "{{ vm_state }}"
         wait: yes
+    - name: Add host to group 'new_host'
+      add_host:
+        name: "{{ vm_name }}"
+        groups: new_host
   post_tasks:
     - name: Logout from oVirt
       ovirt_auth:

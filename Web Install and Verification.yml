@@ -1,5 +1,5 @@
 - name: Install nginx, insert an index page, verify service is started and that the index page works
-  hosts: all
+  hosts: new_host
 
   tasks:
   - name: Add epel-release repo and install nginx
@@ -18,7 +18,7 @@
 
   - name: Check that you can connect to the index page and that Hello is in the contents
     uri:
-      url: https://192.168.56.100/index.html
+      url: https://{{ ansible_default_ipv4.address }}/index.html
       validate_certs: no
       return_content: yes
     register: this
