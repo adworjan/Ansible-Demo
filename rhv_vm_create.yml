@@ -38,9 +38,9 @@
         name: "{{ vm_name }}"  
         inventory: "Demo Inventory"
         validate_certs: no
-        tower_config_file: "/var/lib/awx/tower_cli.cfg"
-      tags:
-        - tcli
+        tower_host: "tower.shadowman.dev"
+        tower_password: "r3dh4t12"
+        tower_username: "admin"
   post_tasks:
     - name: Logout from oVirt
       ovirt_auth:
