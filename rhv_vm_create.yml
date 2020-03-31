@@ -29,10 +29,10 @@
         high_availability: true
         state: "{{ vm_state }}"
         wait: yes
-    - name: Add host to group 'new_host'
-      add_host:
-        name: "{{ vm_name }}"
-        groups: new_host
+    - name: Add set_stats to host 'new_host'
+      set_stats:
+        data:
+          new_host: "{{ ansible_default_ipv4.address }}"
   post_tasks:
     - name: Logout from oVirt
       ovirt_auth:
