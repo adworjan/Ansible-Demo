@@ -37,7 +37,7 @@
       register: result
     - debug:
         msg: "{{ result }}"
-Return Values
+
     - name: Add set_stats to host 'new_host'
       set_stats:
         data:
