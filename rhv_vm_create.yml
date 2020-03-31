@@ -32,6 +32,7 @@
 
     - name: get nic info
       ovirt_nic_info:
+        auth: "{{ ovirt_auth }}"
         vm: "{{ vm_name }}"
         name: eth*
       register: result
