@@ -30,6 +30,14 @@
         state: "{{ vm_state }}"
         wait: yes
 
+    - name: get nic info
+      ovirt_nic_info:
+        vm: "{{ vm_name }}"
+        name: eth*
+      register: result
+    - debug:
+        msg: "{{ result }}"
+Return Values
     - name: Add set_stats to host 'new_host'
       set_stats:
         data:
