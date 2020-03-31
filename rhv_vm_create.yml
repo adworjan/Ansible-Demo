@@ -32,7 +32,7 @@
     - name: Add set_stats to host 'new_host'
       set_stats:
         data:
-          new_host: "{{ ansible_default_ipv4.address }}"
+          new_host: "{{ vm_name }}"
   post_tasks:
     - name: Logout from oVirt
       ovirt_auth:
