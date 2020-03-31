@@ -31,7 +31,7 @@
         wait: yes
       register: result
     - debug:
-        msg: "{{ result.ovirt_vms }}"
+        msg: "{{ result }}"
     - name: Add set_stats to host 'new_host'
       set_stats:
         data:
