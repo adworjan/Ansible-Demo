@@ -1,5 +1,5 @@
 - name: Install nginx, insert an index page, verify service is started and that the index page works
-  hosts: new_host
+  hosts: "{{ new_host }}"
 
   tasks:
   - name: Add epel-release repo and install nginx
