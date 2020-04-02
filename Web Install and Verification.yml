@@ -34,12 +34,14 @@
       service: http
       permanent: yes
       state: enabled
+    notify: restart_firewalld
 
   - name: Open Firewalld for SSL
     firewalld:
       service: https
       permanent: yes
       state: enabled
+    notify: restart_firewalld
 
   - name: Add apache package
     yum:
@@ -61,8 +63,17 @@
     register: this
     failed_when: "'Hello' not in this.content"
 
+  - name: Print web address
+    debug: 
+      msg: "Web address is http://{{ ansible_default_ipv4.address }}/index.html"
+
   handlers:
     - name: httpd_running
       service:
         name: httpd
         state: started
+
+    - name: restart_firewalld
+      service:
+        name: firewalld
+        state: restarted
