@@ -55,7 +55,7 @@
   post_tasks:
   - name: Check that you can connect to the index page and that Hello is in the contents
     uri:
-      url: https://{{ ansible_default_ipv4.address }}/index.html
+      url: http://{{ ansible_default_ipv4.address }}/index.html
       validate_certs: no
       return_content: yes
     register: this
