@@ -2,14 +2,11 @@
   hosts: "{{ new_host }}"
 
   tasks:
-  - name: Add epel-release repo and install nginx
+  - name: Add apache
     yum:
-      name: "{{ item }}"
-      state: present
-    loop:
-    - epel-release
-    - nginx
-    notify: nginx_running
+      name: httpd
+      state: latest
+    notify: httpd_running
 
   - name: Insert Index Page for webpage
     template:
@@ -25,7 +22,7 @@
     failed_when: "'Hello' not in this.content"
 
   handlers:
-    - name: nginx_running
+    - name: httpd_running
       service:
-        name: nginx
+        name: httpd
         state: started
