@@ -11,6 +11,7 @@
     redhat_subscription:
       state: present
       activationkey: RHEL7 Everything
+      org_id: Shadow_Man
 
   - name: Enable Repositories
     rhsm_repository:
