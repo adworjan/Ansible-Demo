@@ -2,6 +2,10 @@
   hosts: "{{ new_host }}"
 
   tasks:
+  - name: Enable a RHSM repository
+    rhsm_repository:
+      name: rhel-7-server-rpms
+      
   - name: Add apache
     yum:
       name: httpd
