@@ -1,0 +1,10 @@
+---
+- name: Wait for host to generate IP
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: sleep for 300 seconds and continue with play
+      wait_for:
+        timeout: 60
+      delegate_to: localhost
