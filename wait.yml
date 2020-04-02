@@ -4,7 +4,7 @@
   connection: local
   gather_facts: false
   tasks:
-    - name: sleep for 300 seconds and continue with play
+    - name: sleep for 180 seconds and continue with play
       wait_for:
-        timeout: 300
+        timeout: 180
       delegate_to: localhost
