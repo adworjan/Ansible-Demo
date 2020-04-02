@@ -2,7 +2,6 @@
   hosts: "{{ new_host }}"
 
   tasks:
-
   - name: Add apache
     yum:
       name: httpd
@@ -14,6 +13,7 @@
       src: index.html.j2
       dest: /var/www/html/index.html
 
+  post_tasks:
   - name: Check that you can connect to the index page and that Hello is in the contents
     uri:
       url: https://{{ ansible_default_ipv4.address }}/index.html
