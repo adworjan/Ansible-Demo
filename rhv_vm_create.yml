@@ -35,12 +35,6 @@
         data:
           new_host: "{{ vm_name }}"
           
-    - name: Add tower host
-      tower_host:
-        name: "{{ vm_name }}"  
-        inventory: "Demo Inventory"
-        validate_certs: no
-
   post_tasks:
     - name: Logout from oVirt
       ovirt_auth:
