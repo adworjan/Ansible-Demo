@@ -10,7 +10,7 @@
   - name: Use Activation Key to Regsiter to Satellite
     redhat_subscription:
       state: present
-      activation_key: RHEL7 Everything
+      activationkey: RHEL7 Everything
 
   - name: Enable Repositories
     rhsm_repository:
