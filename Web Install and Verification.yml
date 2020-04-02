@@ -1,4 +1,4 @@
-- name: Install nginx, insert an index page, verify service is started and that the index page works
+- name: Install apache, insert an index page, verify service is started and that the index page works
   hosts: "{{ new_host }}"
 
   tasks:
@@ -7,7 +7,7 @@
       name: https://sat6.shadowman.dev/pub/katello-ca-consumer-latest.noarch.rpm
       state: present
 
-  - name: Use Activation Key to Regsiter to Satellite
+  - name: Use Activation Key to Register to Satellite
     redhat_subscription:
       state: present
       activationkey: RHEL7 Everything
@@ -23,7 +23,7 @@
         - rhel-7-server-extras-rpms
         - rhel-7-server-optional-rpms
 
-  - name: Add apache
+  - name: Add apache package
     yum:
       name: httpd
       state: latest
