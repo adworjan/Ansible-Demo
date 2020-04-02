@@ -1,4 +1,4 @@
-- name: Install nginx, insert an index page, verify service is started and that the index page works
+- name: Install apache, insert an index page, verify service is started and that the index page works
   hosts: "{{ new_host }}"
 
   tasks:
@@ -7,10 +7,11 @@
       name: https://sat6.shadowman.dev/pub/katello-ca-consumer-latest.noarch.rpm
       state: present
 
-  - name: Use Activation Key to Regsiter to Satellite
+  - name: Use Activation Key to Register to Satellite
     redhat_subscription:
       state: present
       activationkey: RHEL7 Everything
+      org_id: Shadow_Man
 
   - name: Enable Repositories
     rhsm_repository:
@@ -21,6 +22,12 @@
         - rhel-7-server-rpms
         - rhel-7-server-extras-rpms
         - rhel-7-server-optional-rpms
+        
+  - name: Open Firewalld for apache
+    firewalld:
+      service: http
+      permanent: yes
+      state: enabled
 
   - name: Open Firewalld for apache
     firewalld:
@@ -34,7 +41,7 @@
       permanent: yes
       state: enabled
 
-  - name: Add apache
+  - name: Add apache package
     yum:
       name: httpd
       state: latest
