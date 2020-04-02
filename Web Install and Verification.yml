@@ -29,6 +29,12 @@
       permanent: yes
       state: enabled
 
+  - name: Open Firewalld for apache
+    firewalld:
+      service: http
+      permanent: yes
+      state: enabled
+
   - name: Open Firewalld for SSL
     firewalld:
       service: https
