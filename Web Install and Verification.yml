@@ -2,6 +2,26 @@
   hosts: "{{ new_host }}"
 
   tasks:
+  - name: Install Katello RPM for Satellite Server
+    yum:
+      name: https://sat6.shadowman.dev/pub/katello-ca-consumer-latest.noarch.rpm
+      state: present
+
+  - name: Use Activation Key to Regsiter to Satellite
+    redhat_subscription:
+      state: present
+      activation_key: RHEL7 Everything
+
+  - name: Enable Repositories
+    rhsm_repository:
+      name: "{{ repos }}"
+      purge: True
+    vars:
+      repos:
+        - rhel-7-server-rpms
+        - rhel-7-server-extras-rpms
+        - rhel-7-server-optional-rpms
+
   - name: Add apache
     yum:
       name: httpd
