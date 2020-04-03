@@ -1,6 +1,5 @@
 - name: Install apache, insert an index page, verify service is started and that the index page works
   hosts: "{{ new_host }}"
-  gather_facts: false
 
   tasks:
   - name: Install Katello RPM for Satellite Server
