@@ -1,0 +1,20 @@
+- name: Add user to sudo and ensure includedir is in file
+  hosts: all
+  gather_facts: no
+
+  tasks: 
+  - name : Add user "ansibleuser" to sudo
+    lineinfile:
+      path: /etc/sudoers.d/ansibleuser
+      line: 'ansibleuser ALL=(ALL) NOPASSWD: ALL'
+      state: present
+      mode: 0440
+      create: yes
+      validate: 'visudo -cf %s'
+    
+  - name: Set includedir in sudoers
+    lineinfile:
+      path: /etc/sudoers
+      line: '#includedir /etc/sudoers.d'
+      state: present
+      validate: '/usr/sbin/visudo -cf %s'
