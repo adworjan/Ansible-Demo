@@ -11,4 +11,4 @@
   - name: "Display all cluster names"
     debug:
       var: item
-    loop: "{{ output | json_query('file*.path') }}"
+    loop: "{{ output | json_query('files[*].path') }}"
