@@ -8,7 +8,7 @@
       paths: /var/log/tower
       patterns: '*.log'
     register: output
-  - name: "Display all cluster names"
+  - name: "Display all file paths"
     debug:
-      var: item
+      msg: "{{ item }} "
     loop: "{{ output | json_query('files[*].path') }}"
