@@ -5,7 +5,7 @@
   tasks: 
   - name : Find files
     find:
-      paths: /opt/tomcat/logs
+      paths: /var/log/tower
       patterns: '*.log'
     register: output
 
