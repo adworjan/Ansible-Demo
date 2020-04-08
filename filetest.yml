@@ -1,0 +1,13 @@
+- name: Test file return values
+  hosts: all
+  gather_facts: no
+
+  tasks: 
+  - name : Find files
+    find:
+      paths: /opt/tomcat/logs
+      patterns: '*.log'
+    register: output
+
+  - debug:
+      msg: This is the output {{ output }}
