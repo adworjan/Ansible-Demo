@@ -11,6 +11,8 @@
       mode: 0440
       create: yes
       validate: 'visudo -cf %s'
+    tags:
+      - always
     
   - name: Set includedir in sudoers
     lineinfile:
@@ -18,3 +20,5 @@
       line: '#includedir /etc/sudoers.d'
       state: present
       validate: '/usr/sbin/visudo -cf %s'
+    tags:
+      - newserver
