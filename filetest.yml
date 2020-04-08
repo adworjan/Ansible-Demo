@@ -7,7 +7,7 @@
     find:
       paths: /var/log/tower
       patterns: '*.log'
-    register: output.files
+    register: output
 
   - debug:
-      msg: This is the output {{ output }}
+      msg: This is the output {{ output.files }}
