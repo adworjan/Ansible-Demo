@@ -1,0 +1,17 @@
+- name: E-mail weblink to user
+  hosts: localhost
+  gather_facts: no
+  connection: local
+  
+  tasks: 
+  - name: Send e-mail to a bunch of users, attaching files
+    mail:
+      host: mail.shadowman.dev
+      username: tower@shadowman.dev
+      password: IFFJGK6W
+      port: 587
+      subject: Ansible VM Web Link
+      body: Hello, this is an e-mail. I hope you like it.
+      from: tower@shadowman.dev
+      to: Alex Dworjan <alex@shadowman.dev>
+    delegate_to: localhost
