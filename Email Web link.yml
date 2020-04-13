@@ -11,7 +11,7 @@
       password: IFFJGK6W
       port: 587
       subject: Ansible VM Web Link
-      body: Hello, this is an e-mail. I hope you like it.
+      body: "Web address is http://{{ email_ip_address }}/index.html"
       from: tower@shadowman.dev
       to: Alex Dworjan <alex@shadowman.dev>
     delegate_to: localhost

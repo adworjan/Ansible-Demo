@@ -61,6 +61,11 @@
     debug: 
       msg: "Web address is http://{{ ansible_default_ipv4.address }}/index.html"
 
+  - name: Add set_stats to the ip address for e-mail
+    set_stats:
+      data:
+        email_ip_address: "{{ ansible_default_ipv4.address }}"
+
   handlers:
     - name: httpd_running
       service:
