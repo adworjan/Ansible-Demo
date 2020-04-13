@@ -61,7 +61,7 @@
     debug: 
       msg: "Web address is http://{{ ansible_default_ipv4.address }}/index.html"
 
-- name: Send Web Link via E-mail
+  - name: Send Web Link via E-mail
     mail:
       host: mail.shadowman.dev
       username: tower@shadowman.dev
