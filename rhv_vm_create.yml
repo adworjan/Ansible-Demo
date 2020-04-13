@@ -29,12 +29,7 @@
         high_availability: true
         state: "{{ vm_state }}"
         wait: yes
-
-    - name: Add set_stats to host 'new_host'
-      set_stats:
-        data:
-          new_host: "{{ vm_name }}"
-          
+   
   post_tasks:
     - name: Logout from oVirt
       ovirt_auth:
