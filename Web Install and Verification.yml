@@ -61,17 +61,10 @@
     debug: 
       msg: "Web address is http://{{ ansible_default_ipv4.address }}/index.html"
 
-  - name: Send Web Link via E-mail
-    mail:
-      host: mail.shadowman.dev
-      username: tower@shadowman.dev
-      password: IFFJGK6W
-      port: 587
-      subject: Ansible VM Web Link
-      body: "Web address is http://{{ ansible_default_ipv4.address }}/index.html"
-      from: tower@shadowman.dev
-      to: "{{ to_email }}"
-    delegate_to: localhost    
+  - name: Add set_stats to the ip address for e-mail
+    set_stats:
+      data:
+        email_ip_address: "{{ ansible_default_ipv4.address }}"
 
   handlers:
     - name: httpd_running
