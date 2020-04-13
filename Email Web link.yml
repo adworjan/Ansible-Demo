@@ -4,7 +4,7 @@
   connection: local
   
   tasks: 
-  - name: Send e-mail to a bunch of users, attaching files
+  - name: Send Web Link via E-mail
     mail:
       host: mail.shadowman.dev
       username: tower@shadowman.dev
@@ -13,5 +13,5 @@
       subject: Ansible VM Web Link
       body: "Web address is http://{{ email_ip_address }}/index.html"
       from: tower@shadowman.dev
-      to: Alex Dworjan <alex@shadowman.dev>
+      to: "{{ to_email }}"
     delegate_to: localhost
