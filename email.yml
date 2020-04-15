@@ -6,10 +6,10 @@
   tasks: 
   - name: Send Web Link via E-mail
     mail:
-      host: mail.shadowman.dev
-      username: tower@shadowman.dev
-      password: IFFJGK6W
-      port: 587
+      host: "{{ EMAIL_HOST }}"
+      username: "{{ EMAIL_USERNAME }}"
+      password: "{{ EMAIL_PASSWORD }}"
+      port: "{{ EMAIL_PORT }}"
       subject: Ansible VM Web Link
       body: "Web address is http://{{ email_ip_address }}/index.html"
       from: tower@shadowman.dev
