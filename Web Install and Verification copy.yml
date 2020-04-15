@@ -42,15 +42,10 @@
       name: httpd
       state: latest
     notify: httpd_running
-  
-  - name: Insert webpage formatting for html
-    copy:
-      src: website/
-      dest: /var/www/html/
 
   - name: Insert Index Page for webpage
     template:
-      src: indexcomplex.html.j2
+      src: index.html.j2
       dest: /var/www/html/index.html
 
   post_tasks:
