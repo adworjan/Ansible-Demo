@@ -18,7 +18,6 @@
     cluster: Gigahype
     template: RHEL77_ShadowMan_V3
     vm_memory: 4GiB
-    storage_domain: 1TB_Local
   tasks:
     - name: Create and run VM from template
       ovirt_vm:
@@ -29,7 +28,6 @@
         memory: "{{vm_memory}}"
         high_availability: true
         state: "{{ vm_state }}"
-        storage_domain: "{{ storage_domain }}"
         wait: yes
    
   post_tasks:
