@@ -31,8 +31,11 @@
         wait: yes
 
     - name: Wait for system to become reachable over SSH
-      wait_for_connection:
-        timeout: 240
+      ovirt_vm_info:
+        pattern: name={{ vm_name }}
+      register: result
+    - debug:
+        msg: "{{ result.ovirt_vms }}"
       
   post_tasks:
     - name: Logout from oVirt
