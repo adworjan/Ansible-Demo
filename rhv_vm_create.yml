@@ -32,6 +32,7 @@
 
     - name: Wait for system to become reachable over SSH
       ovirt_vm_info:
+        auth: "{{ ovirt_auth }}"
         pattern: name={{ vm_name }}
       register: result
     - debug:
