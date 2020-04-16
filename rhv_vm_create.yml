@@ -29,7 +29,11 @@
         high_availability: true
         state: "{{ vm_state }}"
         wait: yes
-   
+
+    - name: Wait for system to become reachable over SSH
+      wait_for_connection:
+        timeout: 240
+      
   post_tasks:
     - name: Logout from oVirt
       ovirt_auth:
