@@ -26,6 +26,6 @@
     seport:
       ports: 9000
       proto: "tcp"
-      setype: "graylog_port_t"
+      setype: "mongod_port_t"
       state: "present"
     ignore_errors: True
