@@ -1,1 +1,2 @@
-- src: https://github.com/Graylog2/graylog-ansible-role
+- name: Graylog2.graylog-ansible-role
+  src: https://github.com/Graylog2/graylog-ansible-role
