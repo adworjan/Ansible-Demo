@@ -21,11 +21,3 @@
       state: "restarted"
       enabled: "yes"
     ignore_errors: True
-
-  - name: "SELinux port access should be granted for graylog-server"
-    seport:
-      ports: 9000
-      proto: "tcp"
-      setype: "mongod_port_t"
-      state: "present"
-    ignore_errors: True
