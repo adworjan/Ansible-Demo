@@ -21,6 +21,7 @@
     graylog_http_bind_address: "{{ ansible_default_ipv4.address }}:9000"
     graylog_http_publish_uri: "http://{{ ansible_default_ipv4.address }}:9000/"
     graylog_http_external_uri: "http://{{ ansible_default_ipv4.address }}:9000/"
+    graylog_web_endpoint_uri: "http://{{ ansible_default_ipv4.address }}:9000/api/"
 
     nginx_sites:
       graylog:
@@ -69,7 +70,21 @@
         - rhel-7-server-extras-rpms
         - rhel-7-server-optional-rpms
 
+  - name: Open greylog port
+    firewalld:
+      port: 9000/tcp
+      permanent: yes
+      state: enabled
+    notify: restart_firewalld
+
   roles:
     - role: "Graylog2.graylog-ansible-role"
       tags:
         - "graylog"
+
+  handlers:
+
+    - name: restart_firewalld
+      service:
+        name: firewalld
+        state: restarted
