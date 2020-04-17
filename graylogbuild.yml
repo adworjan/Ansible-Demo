@@ -21,11 +21,6 @@
     graylog_http_bind_address: "{{ ansible_default_ipv4.address }}:9000"
     graylog_http_publish_uri: "http://{{ ansible_default_ipv4.address }}:9000/"
     graylog_http_external_uri: "http://{{ ansible_default_ipv4.address }}:9000/"
-    graylog_server_defaults_file_path:    "/etc/sysconfig/graylog-server"
-    graylog_mongodb_data_path:            "/var/lib/mongo"
-    graylog_mongodb_package_dependencies:
-      - "libselinux-python"
-      - "policycoreutils-python"
 
     nginx_sites:
       graylog:
@@ -48,16 +43,16 @@
 
   pre_tasks:
 
-  - name: Install Katello RPM for Satellite Server
+  - name: Install needed packages are installed
     yum:
-      name: https://sat6.shadowman.dev/pub/katello-ca-consumer-latest.noarch.rpm
+      name: "{{ packages }}"
       state: present
-
-  - name: Install EPEL RPM
-    yum:
-      name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-      state: present
-
+    vars:
+      packages:
+      - https://sat6.shadowman.dev/pub/katello-ca-consumer-latest.noarch.rpm
+      - https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+      - policycoreutils-python
+    
   - name: Use Activation Key to Register to Satellite
     redhat_subscription:
       state: present
