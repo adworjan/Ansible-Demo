@@ -26,6 +26,6 @@
     seport:
       ports: 9000
       proto: "tcp"
-      setype: "graylog-server_port_t"
+      setype: "graylog_port_t"
       state: "present"
     ignore_errors: True
