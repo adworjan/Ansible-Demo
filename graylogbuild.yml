@@ -44,7 +44,7 @@
 
   pre_tasks:
 
-  - name: Install needed packages are installed
+  - name: Install needed packages
     yum:
       name: "{{ packages }}"
       state: present
@@ -53,6 +53,7 @@
       - https://sat6.shadowman.dev/pub/katello-ca-consumer-latest.noarch.rpm
       - https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
       - policycoreutils-python
+      - java-1.8.0-openjdk
     
   - name: Use Activation Key to Register to Satellite
     redhat_subscription:
