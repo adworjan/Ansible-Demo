@@ -1,4 +1,15 @@
 ---
 - hosts: all
+
+  pre_tasks:
+    - name: Enable Repositories
+      rhsm_repository:
+        name: "{{ repos }}"
+        purge: True
+      vars:
+        repos:
+          - rhel-7-server-rpms
+          - rhel-7-server-extras-rpms
+          - rhel-7-server-optional-rpms
   roles:
     - ansible.ospatch
