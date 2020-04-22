@@ -85,6 +85,13 @@
       state: enabled
     notify: restart_firewalld
 
+  - name: Open greylog port
+    firewalld:
+      port: 12201/tcp
+      permanent: yes
+      state: enabled
+    notify: restart_firewalld
+
   roles:
     - role: "Graylog2.graylog-ansible-role"
       tags:
