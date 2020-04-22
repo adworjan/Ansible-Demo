@@ -76,7 +76,6 @@
     vars:
       packages:
       - policycoreutils-python
-      - java-1.8.0-openjdk
 
   - name: Open greylog port
     firewalld:
@@ -96,6 +95,17 @@
     - role: "Graylog2.graylog-ansible-role"
       tags:
         - "graylog"
+
+  post_tasks:
+
+  - name: Install needed packages
+    yum:
+      name: "{{ packages }}"
+      state: present
+    vars:
+      packages:
+      - java-1.8.0-openjdk
+
 
   handlers:
 
