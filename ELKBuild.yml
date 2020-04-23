@@ -49,6 +49,7 @@
       state: present
       activationkey: RHEL7 Everything
       org_id: Shadow_Man
+    ignore_errors: true
 
   - name: Enable Repositories
     rhsm_repository:
