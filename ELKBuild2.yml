@@ -140,7 +140,7 @@
       name: kibana
       state: present
 
-  - name: Open firewalld ports 5601 # and redirect 443 to 5601
+  - name: Open firewalld ports 5601 and redirect 443 to 5601
     shell: |
       firewall-cmd --add-port=5601/tcp
       firewall-cmd --permanent --add-port=5601/tcp
@@ -148,12 +148,12 @@
       firewall-cmd --permanent --add-service=https
       firewall-cmd --runtime-to-permanent
       systemctl restart firewalld
-#    firewall-cmd --add-masquerade
-#    firewall-cmd --permanent --add-masquerade
-#    firewall-cmd --permanent --direct --add-rule ipv4 nat OUTPUT 1 -p tcp -d 127.0.0.1 --dport 443 -j REDIRECT --to-ports 5601
-#    firewall-cmd --permanent --direct --add-rule ipv6 nat OUTPUT 1 -p tcp -d 127.0.0.1 --dport 443 -j REDIRECT --to-ports 5601
-#    firewall-cmd --permanent --direct --add-rule ipv4 nat PREROUTING 1 -p tcp -d {{ ansible_default_ipv4.address }} --dport 443 -j REDIRECT --to-ports 5601
-#    firewall-cmd --permanent --direct --add-rule ipv6 nat PREROUTING 1 -p tcp -d {{ ansible_default_ipv4.address }} --dport 443 -j REDIRECT --to-ports 5601
+      firewall-cmd --add-masquerade
+      firewall-cmd --permanent --add-masquerade      
+      firewall-cmd --permanent --direct --add-rule ipv4 nat OUTPUT 1 -p tcp -d 127.0.0.1 --dport 443 -j REDIRECT --to-ports 5601
+      firewall-cmd --permanent --direct --add-rule ipv6 nat OUTPUT 1 -p tcp -d 127.0.0.1 --dport 443 -j REDIRECT --to-ports 5601
+      firewall-cmd --permanent --direct --add-rule ipv4 nat PREROUTING 1 -p tcp -d {{ ansible_default_ipv4.address }} --dport 443 -j REDIRECT --to-ports 5601
+      firewall-cmd --permanent --direct --add-rule ipv6 nat PREROUTING 1 -p tcp -d {{ ansible_default_ipv4.address }} --dport 443 -j REDIRECT --to-ports 5601
 
 #- name: allow kibana user to bind to privileged ports
 #  shell: |
