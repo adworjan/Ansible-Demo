@@ -1,0 +1,38 @@
+---
+- name: Setup ELK Stack
+  hosts: all
+  vars:
+    elk_cluster_name: elk-demo
+  pre_tasks:
+
+  - name: Install needed packages
+    yum:
+      name: "{{ packages }}"
+      state: present
+    vars:
+      packages:
+      - https://sat6.shadowman.dev/pub/katello-ca-consumer-latest.noarch.rpm
+      - https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    
+  - name: Use Activation Key to Register to Satellite
+    redhat_subscription:
+      state: present
+      activationkey: RHEL7 Everything
+      org_id: Shadow_Man
+    ignore_errors: true
+
+  - name: Enable Repositories
+    rhsm_repository:
+      name: "{{ repos }}"
+      purge: True
+    vars:
+      repos:
+        - rhel-7-server-rpms
+        - rhel-7-server-extras-rpms
+        - rhel-7-server-optional-rpms
+
+  roles:
+    - role: pre
+    - role: elasticsearch
+    - role: kibana
+    - role: logstash

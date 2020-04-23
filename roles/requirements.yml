@@ -21,3 +21,15 @@
 
 - name: ansible.ospatch
   src: https://github.com/afpacket/ansible-role-patch-linux
+
+- name: elasticsearch
+  src: https://github.com/harrytruman/elk-ansible/tree/master/roles/elasticsearch
+
+- name: kibana
+  src: https://github.com/harrytruman/elk-ansible/tree/master/roles/kibana
+
+- name: logstash
+  src: https://github.com/harrytruman/elk-ansible/tree/master/roles/logstash
+
+- name: pre
+  src: https://github.com/harrytruman/elk-ansible/tree/master/roles/pre
