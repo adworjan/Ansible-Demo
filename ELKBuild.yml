@@ -7,17 +7,17 @@
     nginx_user: www-data 
     nginx_remove_default_vhost: true 
     nginx_vhosts:
-      # -Kibana proxy.
-      listen: "80 default_server" 
-      filename: "kibana.conf"
-      server_name: "LogVM"
-      extra_parameters: |
-        location / {
-            include /etc/nginx/proxy_params;
-            proxy_pass http://localhost:5601; 
-            proxy_set_header Authorization ""; 
-            proxy_read_timeout 90s;
-        } 
+      # Kibana proxy.
+      - listen: "80 default_server" 
+        filename: "kibana.conf"
+        server_name: "LogVM"
+        extra_parameters: |
+          location / {
+              include /etc/nginx/proxy_params;
+              proxy_pass http://localhost:5601; 
+              proxy_set_header Authorization ""; 
+              proxy_read_timeout 90s;
+          } 
     elasticsearch_curator_pip_package: python3-pip
     logstash_ssl_key_file: elk-example.p8 
     logstash_ssl_certificate_file: elk-example.crt
