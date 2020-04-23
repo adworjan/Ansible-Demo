@@ -10,7 +10,7 @@
       # Kibana proxy.
       - listen: "80 default_server" 
         filename: "kibana.conf"
-        server_name: "LogVM"
+        server_name: "172.16.4.139"
         extra_parameters: |
           location / {
               proxy_pass http://localhost:5601; 
@@ -21,7 +21,7 @@
     logstash_ssl_certificate_file: elk-example.crt
     filebeat_output_logstash_enabled: true 
     filebeat_output_logstash_hosts:
-      - "LogVM:5044"
+      - "172.16.4.139:5044"
     
     filebeat_ssl_key_file: elk-example.p8 
     filebeat_ssl_certificate_file: elk-example.crt 
