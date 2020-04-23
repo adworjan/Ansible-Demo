@@ -4,7 +4,7 @@
   vars:
     java_packages:
       - java-1.8.0-openjdk
-    nginx_user: www-data 
+    nginx_user: root 
     nginx_remove_default_vhost: true 
     nginx_vhosts:
       # Kibana proxy.
