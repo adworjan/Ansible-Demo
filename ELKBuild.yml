@@ -61,14 +61,6 @@
         - rhel-7-server-extras-rpms
         - rhel-7-server-optional-rpms
 
-  - name: Install needed packages
-    yum:
-      name: "{{ packages }}"
-      state: present
-    vars:
-      packages:
-      - policycoreutils-python
-
   roles:
     - geerlingguy.java
     - geerlingguy.nginx
