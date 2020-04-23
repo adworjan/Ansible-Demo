@@ -13,7 +13,6 @@
         server_name: "LogVM"
         extra_parameters: |
           location / {
-              include /etc/nginx/proxy_params;
               proxy_pass http://localhost:5601; 
               proxy_set_header Authorization ""; 
               proxy_read_timeout 90s;
