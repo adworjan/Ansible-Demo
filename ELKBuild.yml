@@ -1,0 +1,78 @@
+---
+- name: Setup ELK Stack
+  hosts: all
+  vars:
+    java_packages:
+      - openjdk-8-jdk
+    nginx_user: www-data 
+    nginx_remove_default_vhost: true 
+    nginx_vhosts:
+      # -Kibana proxy.
+      listen: "80 default_server" 
+      filename: kibana.conf
+      server_name: LogVM
+      extra_parameters: |
+        location / {
+            include /etc/nginx/proxy_params;
+            proxy_pass http://localhost:5601; 
+            proxy_set_header Authorization ""; 
+            proxy_read_timeout 90s;
+        } 
+    elasticsearch_curator_pip_package: python3-pip
+    logstash_ssl_key_file: elk-example.p8 
+    logstash_ssl_certificate_file: elk-example.crt
+    filebeat_output_logstash_enabled: true 
+    filebeat_output_logstash_hosts:
+      - "logs.test:5044"
+    
+    filebeat_ssl_key_file: elk-example.p8 
+    filebeat_ssl_certificate_file: elk-example.crt 
+    filebeat_ssl_insecure: "true"
+    filebeat_inputs: 
+      - type: log
+        paths:
+          - /var/log/auth.log
+
+  pre_tasks:
+
+  - name: Install needed packages
+    yum:
+      name: "{{ packages }}"
+      state: present
+    vars:
+      packages:
+      - https://sat6.shadowman.dev/pub/katello-ca-consumer-latest.noarch.rpm
+      - https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    
+  - name: Use Activation Key to Register to Satellite
+    redhat_subscription:
+      state: present
+      activationkey: RHEL7 Everything
+      org_id: Shadow_Man
+
+  - name: Enable Repositories
+    rhsm_repository:
+      name: "{{ repos }}"
+      purge: True
+    vars:
+      repos:
+        - rhel-7-server-rpms
+        - rhel-7-server-extras-rpms
+        - rhel-7-server-optional-rpms
+
+  - name: Install needed packages
+    yum:
+      name: "{{ packages }}"
+      state: present
+    vars:
+      packages:
+      - policycoreutils-python
+
+  roles:
+    - geerlingguy.java
+    - geerlingguy.nginx
+    - geerlingguy.elasticsearch
+    - geerlingguy.elasticsearch-curator 
+    - geerlingguy.kibana
+    - geerlingguy.logstash
+    - geerlingguy.filebeat

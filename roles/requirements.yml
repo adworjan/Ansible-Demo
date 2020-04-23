@@ -1,5 +1,23 @@
-- name: Graylog2.graylog-ansible-role
-  src: https://github.com/Graylog2/graylog-ansible-role
+- name: geerlingguy.elasticsearch-curator
+  src: https://github.com/geerlingguy/ansible-role-elasticsearch-curator
+
+- name: geerlingguy.elasticsearch
+  src: https://github.com/geerlingguy/ansible-role-elasticsearch
+
+- name: geerlingguy.filebeat
+  src: https://github.com/geerlingguy/ansible-role-filebeat
+
+- name: geerlingguy.java
+  src: https://github.com/geerlingguy/ansible-role-java
+
+- name: geerlingguy.kibana
+  src: https://github.com/geerlingguy/ansible-role-kibana
+
+- name: geerlingguy.logstash
+  src: https://github.com/geerlingguy/ansible-role-logstash
+
+- name: geerlingguy.nginx
+  src: https://github.com/geerlingguy/ansible-role-nginx
 
 - name: ansible.ospatch
   src: https://github.com/afpacket/ansible-role-patch-linux
