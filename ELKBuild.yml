@@ -21,7 +21,7 @@
     logstash_ssl_certificate_file: elk-example.crt
     filebeat_output_logstash_enabled: true 
     filebeat_output_logstash_hosts:
-      - "logs.test:5044"
+      - "LogVM:5044"
     
     filebeat_ssl_key_file: elk-example.p8 
     filebeat_ssl_certificate_file: elk-example.crt 
