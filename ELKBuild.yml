@@ -9,8 +9,8 @@
     nginx_vhosts:
       # -Kibana proxy.
       listen: "80 default_server" 
-      filename: kibana.conf
-      server_name: LogVM
+      filename: "kibana.conf"
+      server_name: "LogVM"
       extra_parameters: |
         location / {
             include /etc/nginx/proxy_params;
