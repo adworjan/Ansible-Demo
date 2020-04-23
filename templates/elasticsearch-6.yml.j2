@@ -77,7 +77,7 @@ transport.tcp.port: 9300
 #
 #discovery.zen.ping.unicast.hosts: ["host1", "host2"]
 
-discovery.zen.ping.unicast.hosts: {{ groups['elasticsearch'] | to_yaml }}
+discovery.zen.ping.unicast.hosts: {{ ansible_default_ipv4.address }}
 
 #
 # Prevent the "split brain" by configuring the majority of nodes (total number of master-eligible nodes / 2 + 1):

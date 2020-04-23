@@ -140,7 +140,7 @@
       name: kibana
       state: present
 
-  - name: Open firewalld ports 5601 and # redirect 443 to 5601
+  - name: Open firewalld ports 5601 # and redirect 443 to 5601
     shell: |
       firewall-cmd --add-port=5601/tcp
       firewall-cmd --permanent --add-port=5601/tcp

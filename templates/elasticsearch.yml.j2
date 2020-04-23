@@ -76,14 +76,14 @@ network.host: {{ ansible_default_ipv4.address }}
 #
 #discovery.seed_hosts: ["host1", "host2"]
 
-discovery.zen.ping.unicast.hosts: {{ groups['elasticsearch'] | to_yaml }}
+discovery.zen.ping.unicast.hosts: {{ ansible_default_ipv4.address }}
 
 #
 # Bootstrap the cluster using an initial set of master-eligible nodes:
 #
 #cluster.initial_master_nodes: ["node-1", "node-2"]
 
-cluster.initial_master_nodes: {{ groups['elasticsearch'] | to_yaml }}
+cluster.initial_master_nodes: {{ ansible_default_ipv4.address }}
 
 #
 # For more information, consult the discovery and cluster formation module documentation.
