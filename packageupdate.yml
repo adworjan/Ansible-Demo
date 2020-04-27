@@ -1,10 +1,8 @@
----
-- name: Upgrade all packages
+- name: Install or uninstall a package
   hosts: all
-
-  tasks:
-    - name: upgrade all packages
-      yum: 
-       name: '*'
-       state: latest
+  tasks: 
+    - name: Install a new package
+      yum:  
+        name: "{{ package }}"
+        state: "{{ state }}"
 
