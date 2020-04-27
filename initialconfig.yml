@@ -1,0 +1,32 @@
+---
+- name: Perform inital configs of lab VMs
+  hosts: all
+  gather_facts: false
+
+  tasks:
+
+  - name: copy SSH key
+    authorized_key: 
+      user: root
+      state: present
+      key: https://github.com/lynndixon.keys
+
+  - name: Install prefered software
+    yum:
+      name: "{{ packages }}"
+    vars:
+      packages:
+        - screen
+        - vim
+        - elinks
+
+  - name: Add Fancy Legal Disclaimer
+    copy:
+      src: templates/add_motd
+      dest: /etc/motd
+
+  - name: Configure MOTD
+    lineinfile:
+      path: /etc/motd
+      line: " ----- This Machine has been configured with Ansible! ---- "
+      create: yes
