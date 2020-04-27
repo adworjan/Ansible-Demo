@@ -1,6 +1,6 @@
 ---
 - name: Perform inital configs of lab VMs
-  hosts: all
+  hosts: "{{ vm_name }}"
   gather_facts: false
 
   tasks:
