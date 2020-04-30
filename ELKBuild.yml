@@ -3,33 +3,6 @@
   hosts: all
   vars:
     elk_cluster_name: elk-demo
-  pre_tasks:
-
-  - name: Install needed packages
-    yum:
-      name: "{{ packages }}"
-      state: present
-    vars:
-      packages:
-      - https://sat6.shadowman.dev/pub/katello-ca-consumer-latest.noarch.rpm
-      - https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-    
-  - name: Use Activation Key to Register to Satellite
-    redhat_subscription:
-      state: present
-      activationkey: RHEL7 Everything
-      org_id: Shadow_Man
-    ignore_errors: true
-
-  - name: Enable Repositories
-    rhsm_repository:
-      name: "{{ repos }}"
-      purge: True
-    vars:
-      repos:
-        - rhel-7-server-rpms
-        - rhel-7-server-extras-rpms
-        - rhel-7-server-optional-rpms
 
   tasks:
 
@@ -38,13 +11,6 @@
       state=present
       key=https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
-#- name: create repo for elastic packages
-#  yum_repository:
-#    name: elasticsearch
-#    description: Elastic 6.x Repo
-#    baseurl: https://artifacts.elastic.co/packages/6.x/yum
-#    gpgcheck: yes
-
   - name: create repo for elastic packages
     yum_repository:
       name: elasticsearch
@@ -52,15 +18,6 @@
       baseurl: https://artifacts.elastic.co/packages/7.x/yum
       gpgcheck: yes
 
-#- name: Copy ELK Packages
-#  copy:
-#    src: "{{ item }}"
-#    dest: /tmp/{{ item }}
-#    mode: 0644
-#  with_items:
-#    - "{{ elasticsearch_package }}"
-#    - "{{ logstash_package }}"
-#    - "{{ kibana_package }}"
 
   - name: Open firewall ports
     shell : | 
@@ -90,7 +47,6 @@
 
   - name: install elasticsearch
     yum:
-#    name: /tmp/{{ elasticsearch_package }}
       name: elasticsearch
       state: present
 
@@ -136,7 +92,6 @@
 
   - name: install kibana
     yum:
-#    name: /tmp/{{ kibana_package }}
       name: kibana
       state: present
 
@@ -155,23 +110,12 @@
       firewall-cmd --permanent --direct --add-rule ipv4 nat PREROUTING 1 -p tcp -d {{ ansible_default_ipv4.address }} --dport 443 -j REDIRECT --to-ports 5601
       firewall-cmd --permanent --direct --add-rule ipv6 nat PREROUTING 1 -p tcp -d {{ ansible_default_ipv4.address }} --dport 443 -j REDIRECT --to-ports 5601
 
-#- name: allow kibana user to bind to privileged ports
-#  shell: |
-#    setcap 'CAP_NET_BIND_SERVICE=+eip' /usr/share/kibana/node/bin/node
-
   - name: set kibana server address
     lineinfile:
       dest: /etc/kibana/kibana.yml
       regexp: #server.name
       insertafter: "^#server.host"
       line: "server.host: \"{{ ansible_default_ipv4.address }}\""
-
-#- name: set kibana port to 443
-#  lineinfile:
-#    dest: /etc/kibana/kibana.yml
-#    regexp: #server.port
-#    insertafter: "^#server.host"
-#    line: "server.port: 443"
 
   - name: set elasticsearch node address
     lineinfile:
@@ -194,7 +138,6 @@
 
   - name: install logstash
     yum:
-#    name: /tmp/{{ logstash_package }}
       name: logstash
       state: present
 
