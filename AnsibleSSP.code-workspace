@@ -3,6 +3,9 @@
 		{
 			"name": "Ansible-Demo",
 			"path": "."
+		},
+		{
+			"path": "../Website"
 		}
 	]
 }
