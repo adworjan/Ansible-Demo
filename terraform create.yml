@@ -1,7 +1,6 @@
 ---
 - name: Create VM on RHV using Terraform
-  hosts: localhost
-  connection: local
+  hosts: all
   gather_facts: false
   
   tasks:
