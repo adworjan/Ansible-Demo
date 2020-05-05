@@ -1,5 +1,5 @@
 ---
-- name: Create VM on RHV using Terraform
+- name: Update VM on RHV using Terraform
   hosts: all
   gather_facts: false
   
