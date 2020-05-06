@@ -38,7 +38,7 @@
     
     - name: Debug results
       debug:
-        msg: "{{ result.ovirt_vms.guest_operating_system.kernel.version.build }}"
+        msg: "{{ result.ovirt_vms[0].guest_operating_system.kernel.version.build }}"
       
   post_tasks:
     - name: Logout from oVirt
