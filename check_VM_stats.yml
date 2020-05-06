@@ -1,0 +1,11 @@
+---
+- name: sleep for 30 seconds and continue with play to allow agent installation
+  wait_for:
+    timeout: 30
+  delegate_to: localhost
+
+- name: Check stats of VM name
+  ovirt_vm_info:
+    auth: "{{ ovirt_auth }}"
+    pattern: name={{ vm_name }}
+  register: result

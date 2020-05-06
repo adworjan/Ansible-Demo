@@ -20,21 +20,8 @@
         auth: "{{ ovirt_auth }}"
         pattern: name={{ vm_name }}
       register: result
+      until:  result.ovirt_vms[0].guest_operating_system.kernel.version.build is defined 
 
-    - name: Block to loop for agent install
-      block:
-        - name: sleep for 30 seconds and continue with play to allow agent installation
-          wait_for:
-            timeout: 30
-          delegate_to: localhost
-
-        - name: Check stats of VM name
-          ovirt_vm_info:
-            auth: "{{ ovirt_auth }}"
-            pattern: name={{ vm_name }}
-          register: result
-      when: result.ovirt_vms[0].guest_operating_system.kernel.version.build is not defined 
-   
   post_tasks:
     - name: Logout from oVirt
       ovirt_auth:
