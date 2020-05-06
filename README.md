@@ -17,6 +17,9 @@ add_motd
 elasticsearch.yml.j2
 >Elasticsearch configuration file for use with ELKBuild.yml
 
+indexcomplex.html.j2
+>Complex Index file for Web Install and Verification that supplies inventory_hostname into webpage
+
 logstash.conf
 >Logstash configuration file for use with ELKBuild.yml
 
@@ -61,7 +64,7 @@ ServiceNowticket.yml
 > Create an incident ticket in servicenow. User must supply {{ incident_description }}, {{ sn_urgency }}, and {{ sn_impact }}. Ansible facts need to be gathered to pull operating system and ip_address information for ticket addition (need custom fields in ServiceNow)
 
 terraform create.yml
->Create or remove a VM on RHV using Terraform. {{ vm_name }} must be supplied by the user. This will update the main.yml file to have a name supplied at time of fun.
+>Create or remove a VM on RHV using Terraform. {{ vm_name }} must be supplied by the user. This will update the main.yml file to have a name supplied at time of fun. Terraform scripts are located on Tower server at ~/terraform. Defaults are in ~/terraform/modules/vms with the runtime and authentication scripts at ~/terraform/ovirt
 
 wait.yml
 >wait 180 seconds. This is used following a VM create in RHV to allow the agent to be installed so an IP address can be generated
