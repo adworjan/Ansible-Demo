@@ -23,40 +23,15 @@
       org_id: Shadow_Man
     ignore_errors: true
   
-  - name: Handle possible repo error
-    block: 
-      - name: Enable Repositories
-        rhsm_repository:
-          name: "{{ repos }}"
-          purge: True
-        vars:
-          repos:
-            - rhel-7-server-rpms
-            - rhel-7-server-extras-rpms
-            - rhel-7-server-optional-rpms
-    rescue: 
-      - name: Unregister
-        redhat_subscription:
-          activationkey: RHEL7 Everything
-          org_id: Shadow_Man
-          state: absent
-
-      - name: Use Activation Key to Re-Register to Satellite
-        redhat_subscription:
-          state: present
-          activationkey: RHEL7 Everything
-          org_id: Shadow_Man
-          force_register: true
-
-      - name: Enable Repositories
-        rhsm_repository:
-          name: "{{ repos }}"
-          purge: True
-        vars:
-          repos:
-            - rhel-7-server-rpms
-            - rhel-7-server-extras-rpms
-            - rhel-7-server-optional-rpms  
+  - name: Enable Repositories
+    rhsm_repository:
+      name: "{{ repos }}"
+      purge: True
+    vars:
+      repos:
+        - rhel-7-server-rpms
+        - rhel-7-server-extras-rpms
+        - rhel-7-server-optional-rpms
 
   - name: Install prefered software
     yum:
