@@ -17,6 +17,9 @@ add_motd
 elasticsearch.yml.j2
 >Elasticsearch configuration file for use with ELKBuild.yml
 
+indexcomplex.html.j2
+>Complex Index file for Web Install and Verification that supplies inventory_hostname into webpage
+
 logstash.conf
 >Logstash configuration file for use with ELKBuild.yml
 
