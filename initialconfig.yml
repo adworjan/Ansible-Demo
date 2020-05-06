@@ -41,7 +41,7 @@
           org_id: Shadow_Man
           state: absent
 
-      - name: Use Activation Key to Register to Satellite
+      - name: Use Activation Key to Re-Register to Satellite
         redhat_subscription:
           state: present
           activationkey: RHEL7 Everything
