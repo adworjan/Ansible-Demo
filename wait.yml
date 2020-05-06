@@ -3,7 +3,6 @@
   hosts: localhost
   connection: local
   gather_facts: false
-  var: result
 
   pre_tasks:
     - name: Login to oVirt
@@ -15,6 +14,13 @@
         insecure: "{{ rhvm_insecure | default(true) }}"
 
   tasks:
+
+    - name: Check stats of VM name
+      ovirt_vm_info:
+        auth: "{{ ovirt_auth }}"
+        pattern: name={{ vm_name }}
+      register: result
+
     - name: Block to loop for agent install
       block:
         - name: sleep for 30 seconds and continue with play to allow agent installation
