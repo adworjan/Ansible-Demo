@@ -6,20 +6,24 @@ Demos for SE Management SSP for use with customers to showcase different aspects
 # Roles
 Current role in requirements.yml is for patching Linux only
 
-# Templates
-add_motd
->adds a custom MOTD to the server
-elasticsearch.yml.j2
->Elasticsearch configuration file for use with ELKBuild.yml
-logstash.conf
->Logstash configuration file for use with ELKBuild.yml
-terraform.tf.j2
->terraform main.tf for use with terraform create.yml Allows you to specify name of VM at runtime
 
 # Website
 Contains formatting for web install
 
-#Playbooks
+# Templates
+add_motd
+>adds a custom MOTD to the server
+
+elasticsearch.yml.j2
+>Elasticsearch configuration file for use with ELKBuild.yml
+
+logstash.conf
+>Logstash configuration file for use with ELKBuild.yml
+
+terraform.tf.j2
+>terraform main.tf for use with terraform create.yml Allows you to specify name of VM at runtime
+
+# Playbooks
 addsudouser
 >Add user to sudo and ensure includedir is in sudoers file
 
