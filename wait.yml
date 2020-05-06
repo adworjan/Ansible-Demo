@@ -20,7 +20,9 @@
         auth: "{{ ovirt_auth }}"
         pattern: name={{ vm_name }}
       register: result
-      until:  result.ovirt_vms[0].guest_operating_system.kernel.version.build is defined 
+      until:  result.ovirt_vms[0].guest_operating_system.kernel.version.build is defined
+      retries: 30
+      delay: 10
 
   post_tasks:
     - name: Logout from oVirt
