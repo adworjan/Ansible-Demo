@@ -67,7 +67,7 @@ terraform create.yml
 >Create or remove a VM on RHV using Terraform. {{ vm_name }} must be supplied by the user. This will update the main.yml file to have a name supplied at time of fun. Terraform scripts are located on Tower server at ~/terraform. Defaults are in ~/terraform/modules/vms with the runtime and authentication scripts at ~/terraform/ovirt
 
 wait.yml
->retests if the VM agent has been installed every 10 seconds for a total of 600 seconds before failure
+>retests if the VM agent has been installed every 10 seconds for a total of 600 seconds before failure. Requires {{ vm_name }}
 
 Web Install and Verification.yml
 > Opens firewall ports for apache and SSL, installs apache, inserts HTML5 formatting from website folder in git, inserts index page, verifies name "Alex Dworjan" exists in the content of the page, prints the web address to the screen, sets a stat for email_ip_address for use in email playbook
