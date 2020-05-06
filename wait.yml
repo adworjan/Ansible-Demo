@@ -3,8 +3,34 @@
   hosts: localhost
   connection: local
   gather_facts: false
+  var: result
+
+  pre_tasks:
+    - name: Login to oVirt
+      ovirt_auth:
+        hostname: "{{ rhvm_fqdn }}"
+        username: "{{ rhvm_user }}"
+        password: "{{ rhvm_password }}"
+        ca_file: "{{ rhvm_cafile | default(omit) }}"
+        insecure: "{{ rhvm_insecure | default(true) }}"
+
   tasks:
-    - name: sleep for 180 seconds and continue with play
-      wait_for:
-        timeout: 180
-      delegate_to: localhost
+    - name: Block to loop for agent install
+      block:
+        - name: sleep for 30 seconds and continue with play to allow agent installation
+          wait_for:
+            timeout: 30
+          delegate_to: localhost
+
+        - name: Check stats of VM name
+          ovirt_vm_info:
+            auth: "{{ ovirt_auth }}"
+            pattern: name={{ vm_name }}
+          register: result
+      when: result.ovirt_vms[0].guest_operating_system.kernel.version.build is not defined 
+   
+  post_tasks:
+    - name: Logout from oVirt
+      ovirt_auth:
+        state: absent
+        ovirt_auth: "{{ ovirt_auth }}"

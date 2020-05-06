@@ -29,17 +29,6 @@
         high_availability: true
         state: "{{ vm_state }}"
         wait: yes
-
-    - name: Check VM name
-      ovirt_vm_info:
-        auth: "{{ ovirt_auth }}"
-        pattern: name={{ vm_name }}
-      register: result
-    
-    - name: Debug results
-      debug:
-        msg: "This seems to work"
-      when: result.ovirt_vms[0].guest_operating_system.kernel.version.build is defined
       
   post_tasks:
     - name: Logout from oVirt
