@@ -30,7 +30,7 @@
 
   - name: Insert Index Page for webpage
     template:
-      src: indexcomplex.html.j2
+      src: templates/indexcomplex.html.j2
       dest: /var/www/html/index.html
 
   post_tasks:
