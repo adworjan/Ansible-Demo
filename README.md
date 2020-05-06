@@ -16,6 +16,9 @@ logstash.conf
 terraform.tf.j2
 >terraform main.tf for use with terraform create.yml Allows you to specify name of VM at runtime
 
+# Website
+Contains formatting for web install
+
 #Playbooks
 addsudouser
 >Add user to sudo and ensure includedir is in sudoers file
@@ -60,4 +63,4 @@ wait
 >wait 180 seconds. This is used following a VM create in RHV to allow the agent to be installed so an IP address can be generated
 
 Web Install and Verification
-> Opens firewall ports for apache and SSL, installs apache, inserts HTML5 formatting, inserts index page, verifies name "Alex Dworjan" exists in the content of the page, prints the web address to the screen, sets a stat for email_ip_address for use in email playbook
+> Opens firewall ports for apache and SSL, installs apache, inserts HTML5 formatting from website folder in git, inserts index page, verifies name "Alex Dworjan" exists in the content of the page, prints the web address to the screen, sets a stat for email_ip_address for use in email playbook
