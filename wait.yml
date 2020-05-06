@@ -15,13 +15,13 @@
 
   tasks:
 
-    - name: Check stats of VM name
+    - name: Check if VM has agent installed
       ovirt_vm_info:
         auth: "{{ ovirt_auth }}"
         pattern: name={{ vm_name }}
       register: result
       until:  result.ovirt_vms[0].guest_operating_system.kernel.version.build is defined
-      retries: 30
+      retries: 60
       delay: 10
 
   post_tasks:
@@ -29,3 +29,5 @@
       ovirt_auth:
         state: absent
         ovirt_auth: "{{ ovirt_auth }}"
+      tags:
+        - always
