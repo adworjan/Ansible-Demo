@@ -38,7 +38,8 @@
     
     - name: Debug results
       debug:
-        msg: "{{ result.ovirt_vms[0].guest_operating_system.kernel.version.build }}"
+        msg: "This seems to work"
+      when: result.ovirt_vms[0].guest_operating_system.kernel.version.build is defined
       
   post_tasks:
     - name: Logout from oVirt
