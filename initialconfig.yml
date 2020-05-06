@@ -37,6 +37,8 @@
     rescue: 
       - name: Unregister
         redhat_subscription:
+          activationkey: RHEL7 Everything
+          org_id: Shadow_Man
           state: absent
 
       - name: Use Activation Key to Register to Satellite
