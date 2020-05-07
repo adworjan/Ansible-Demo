@@ -42,7 +42,7 @@
         - vim
         - elinks
 
-  - name: Add Fancy Legal Disclaimer
+  - name: Add Fancy Legal Disclaimer               
     copy:
       src: templates/add_motd
       dest: /etc/motd
