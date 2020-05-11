@@ -16,3 +16,4 @@
       terraform:
         project_path: "~/terraform/ovirt/"
         state: "{{ terraform_state }}"
+        force_init: yes
