@@ -1,6 +1,6 @@
 - name: Send an e-mail
   hosts: "{{ vm_name }}"
-  gather_facts: no
+  gather_facts: false
   connection: local
   
   tasks: 

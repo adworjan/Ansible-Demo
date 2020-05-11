@@ -1,6 +1,6 @@
 - name: Install apache, insert an index page, verify service is started and that the index page works
   hosts: "{{ vm_name }}"
-
+  gather_facts: false
   tasks:
         
   - name: Open Firewalld for apache
@@ -36,7 +36,7 @@
   post_tasks:
   - name: Check that you can connect to the index page and that Hello is in the contents
     uri:
-      url: http://{{ ansible_default_ipv4.address }}/index.html
+      url: http://{{ ansible_host }}/index.html
       validate_certs: no
       return_content: yes
     register: this
@@ -44,12 +44,7 @@
 
   - name: Print web address
     debug: 
-      msg: "Web address is http://{{ ansible_default_ipv4.address }}/index.html"
-
-  - name: Add set_stats to the ip address for e-mail
-    set_stats:
-      data:
-        email_ip_address: "{{ ansible_default_ipv4.address }}"
+      msg: "Web address is http://{{ ansible_host }}/index.html"
 
   handlers:
     - name: httpd_running
