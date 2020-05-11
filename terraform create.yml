@@ -14,3 +14,4 @@
         project_path: "~/terraform/ovirt/"
         state: "{{ terraform_state }}"
         state_file: "~/terraform/ovirt/{{ vm_name }}.tfstate"
+        force_init: yes
