@@ -2,6 +2,7 @@
 - name: Perform inital configs of lab VMs
   hosts: "{{ vm_name }}"
   gather_facts: false
+  serial: 1
 
   tasks:
 
