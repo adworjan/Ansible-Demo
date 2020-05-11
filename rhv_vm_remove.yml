@@ -15,21 +15,24 @@
         - always
   vars:
     datacenter: Gigahype
+    vm_names: "{{ vm_name.split(',') }}"
 
   tasks:
     - name: Stop VM
       ovirt_vm:
         auth: "{{ ovirt_auth }}"
-        name: "{{ vm_name }}"
+        name: "{{ item }}"
         state: stopped
         wait: yes
+      loop: "{{ vm_names }}"
 
     - name: Delete VM
       ovirt_vm:
         auth: "{{ ovirt_auth }}"
-        name: "{{ vm_name }}"
+        name: "{{ item }}"
         state: absent
         wait: yes
+      loop: "{{ vm_names }}"
 
   post_tasks:
     - name: Logout from oVirt
