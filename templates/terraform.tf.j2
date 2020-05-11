@@ -1,6 +1,6 @@
 {% for item in vm_name %}
 module "vm"{
   source = "../modules/vms"
-  vm_name = "{{ vm_name }}"
+  vm_name = "{{ item }}"
 }
 {% endfor %}
