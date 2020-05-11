@@ -4,7 +4,7 @@
   gather_facts: false
 
   vars:
-    - vm_names: "{{ vm_name.split(,) }}"
+    - vm_names: "{{ vm_name.split(',') }}"
   
   tasks:
     - name: Update terraform main file
