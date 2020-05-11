@@ -1,5 +1,5 @@
 {% for item in vm_name %}
-module "vm"{
+module "vm_{{ item }}"{
   source = "../modules/vms"
   vm_name = "{{ item }}"
 }
