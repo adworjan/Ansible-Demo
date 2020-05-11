@@ -1,4 +1,4 @@
-{% for item in vm_name %}
+{% for item in vm_names %}
 module "vm_{{ item }}"{
   source = "../modules/vms"
   vm_name = "{{ item }}"
