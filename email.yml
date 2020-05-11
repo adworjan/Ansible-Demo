@@ -1,5 +1,5 @@
 - name: Send an e-mail
-  hosts: localhost
+  hosts: "{{ vm_name }}"
   gather_facts: no
   connection: local
   
@@ -11,7 +11,7 @@
       password: "{{ EMAIL_PASSWORD }}"
       port: "{{ EMAIL_PORT }}"
       subject: Ansible VM Web Link
-      body: "Web address is http://{{ email_ip_address }}/index.html"
+      body: "Web address is http://{{ ansible_host }}/index.html"
       from: tower@shadowman.dev
       to: "{{ to_email }}"
     delegate_to: localhost  
