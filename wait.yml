@@ -13,16 +13,20 @@
         ca_file: "{{ rhvm_cafile | default(omit) }}"
         insecure: "{{ rhvm_insecure | default(true) }}"
 
+  vars:
+    - vm_names: "{{ vm_name.split(',') }}"
+
   tasks:
 
     - name: Check if VM has agent installed
       ovirt_vm_info:
         auth: "{{ ovirt_auth }}"
-        pattern: name={{ vm_name }}
+        pattern: name={{ item }}
       register: result
       until:  result.ovirt_vms[0].guest_operating_system.kernel.version.build is defined
       retries: 60
       delay: 10
+      loop: "{{ vm_names }}"
 
   post_tasks:
     - name: Logout from oVirt
