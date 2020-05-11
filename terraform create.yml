@@ -2,6 +2,9 @@
 - name: Update VM on RHV using Terraform
   hosts: all
   gather_facts: false
+
+  vars:
+    - vm_name: "{{ vm_names.split('\n') }}"
   
   tasks:
     - name: Update terraform main file
