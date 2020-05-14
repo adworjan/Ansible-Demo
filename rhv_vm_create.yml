@@ -4,7 +4,7 @@
   connection: local
   gather_facts: false
   pre_tasks:
-    - name: Login to oVirt
+    - name: Login to RHV
       ovirt_auth:
         hostname: "{{ rhvm_fqdn }}"
         username: "{{ rhvm_user }}"
@@ -14,8 +14,8 @@
       tags:
         - always
   vars:
-    datacenter: Gigahype
-    cluster: Gigahype
+    datacenter: Default
+    cluster: Default
     template: RHEL77_ShadowMan_V3
     vm_memory: 4GiB
     vm_names: "{{ vm_name.split(',') }}"
@@ -33,7 +33,7 @@
       loop: "{{ vm_names }}"
       
   post_tasks:
-    - name: Logout from oVirt
+    - name: Logout from RHV
       ovirt_auth:
         state: absent
         ovirt_auth: "{{ ovirt_auth }}"
