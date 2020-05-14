@@ -4,7 +4,7 @@
   connection: local
   vars:
     to_email: "{{ to_emails.split(',') }}"
-    email_body: Web address is http://{{ ansible_host }}/index.html
+    email_body: "Web address is http://{{ ansible_host }}/index.html"
   
   tasks: 
   - name: Send Web Link via E-mail
