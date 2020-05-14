@@ -4,7 +4,6 @@
   connection: local
   vars:
     to_email: "{{ to_emails.split(',') }}"
-    email_body: "Web address is http://{{ ansible_host }}/index.html"
   
   tasks: 
   - name: Send Web Link via E-mail
@@ -14,7 +13,7 @@
       password: "{{ EMAIL_PASSWORD }}"
       port: "{{ EMAIL_PORT }}"
       subject: Ansible VM Web Link
-      body: "{{ e-mail_body }}"
+      body: "Web address is http://{{ ansible_host }}/index.html"
       from: tower@shadowman.dev
       to: "{{ to_email }}"
     delegate_to: localhost  
