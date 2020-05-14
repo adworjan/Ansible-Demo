@@ -12,7 +12,7 @@
       username: "{{ EMAIL_USERNAME }}"
       password: "{{ EMAIL_PASSWORD }}"
       port: "{{ EMAIL_PORT }}"
-      subject: Ansible VM Web Link
+      subject: "{{ email_subject }}"
       body: "{{ email_body }}"
       from: tower@shadowman.dev
       to: "{{ to_email }}"
