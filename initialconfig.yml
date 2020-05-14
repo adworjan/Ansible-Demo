@@ -34,15 +34,6 @@
         - rhel-7-server-extras-rpms
         - rhel-7-server-optional-rpms
 
-  - name: Install prefered software
-    yum:
-      name: "{{ packages }}"
-    vars:
-      packages:
-        - screen
-        - vim
-        - elinks
-
   - name: Add Fancy Legal Disclaimer
     copy:
       src: templates/add_motd
