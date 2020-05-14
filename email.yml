@@ -2,6 +2,8 @@
   hosts: "{{ vm_name }}"
   gather_facts: false
   connection: local
+  vars:
+    to_email: "{{ to_emails.split(',') }}"
   
   tasks: 
   - name: Send Web Link via E-mail
