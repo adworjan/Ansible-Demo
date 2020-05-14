@@ -46,10 +46,11 @@
     debug: 
       msg: "Web address is http://{{ ansible_host }}/index.html"
 
-  - name: Set facts for the e-mail body
-    set_fact:
-      email_body: "Web address is http://{{ ansible_host }}/index.html"
-      email_subject: "Ansible VM Web Link"
+  - name: Set stats for the e-mail body
+    set_stats:
+      data:
+        email_body: "Web address is http://{{ ansible_host }}/index.html"
+        email_subject: "Ansible VM Web Link"
 
   handlers:
     - name: httpd_running
