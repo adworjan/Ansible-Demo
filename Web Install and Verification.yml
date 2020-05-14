@@ -46,6 +46,11 @@
     debug: 
       msg: "Web address is http://{{ ansible_host }}/index.html"
 
+  - name: Set facts for the e-mail body
+    set_fact:
+      email_body: "Web address is http://{{ ansible_host }}/index.html"
+
+
   handlers:
     - name: httpd_running
       service:
