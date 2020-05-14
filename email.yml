@@ -14,7 +14,7 @@
       password: "{{ EMAIL_PASSWORD }}"
       port: "{{ EMAIL_PORT }}"
       subject: Ansible VM Web Link
-      body: "Web address is http://{{ ansible_host }}/index.html"
+      body: "{{ email_body }}"
       from: tower@shadowman.dev
       to: "{{ to_email }}"
     delegate_to: localhost  
