@@ -3,25 +3,26 @@
   gather_facts: no
   connection: local
   
-  tasks:
+  tasks: 
+  - name: Update a catalog work notes and state in ServiceNow
+    snow_record:
+      state: present
+      number: "{{ ticket_number }}"
+      table: sc_request
+      data:
+        request_state: "{{ request_state }}"
+        work_notes: "{{ work_notes }}"
+    when: 
+      - request_state is defined
+      - ticket_number != ''
 
-    block:
-      - name: Update a catalog work notes and state in ServiceNow
-        snow_record:
-          state: present
-          number: "{{ ticket_number }}"
-          table: sc_request
-          data:
-            request_state: "{{ request_state }}"
-            work_notes: "{{ work_notes }}"
-        when: request_state is defined
-
-      - name: Update a catalog work notes only in ServiceNow
-        snow_record:
-          state: present
-          number: "{{ ticket_number }}"
-          table: sc_request
-          data:
-            work_notes: "{{ work_notes }}"
-        when: request_state is not defined
-    when: ticket_number != ''
+  - name: Update a catalog work notes only in ServiceNow
+    snow_record:
+      state: present
+      number: "{{ ticket_number }}"
+      table: sc_request
+      data:
+        work_notes: "{{ work_notes }}"
+    when: 
+      - request_state is not defined
+      - ticket_number!= ''
