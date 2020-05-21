@@ -11,5 +11,4 @@
 
     - name: Print result to screen
       debug:
-        var: result
-        
+        var: result   
