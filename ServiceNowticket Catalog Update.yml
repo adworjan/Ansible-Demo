@@ -10,4 +10,4 @@
       number: "{{ ticket_number }}"
       table: sc_request
       data:
-        request_state: "closed complete"
+        request_state: "3"
