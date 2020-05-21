@@ -4,3 +4,6 @@
   tasks: 
     - name: Run script
       script: Simple.py 
+      args:
+        executable: python
+        
