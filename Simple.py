@@ -1,1 +1,2 @@
-print ('Hello, world!')
+import socket
+print (socket.gethostname())
