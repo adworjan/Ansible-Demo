@@ -1,0 +1,13 @@
+- name: Update a ticket in ServiceNow
+  hosts: all
+  gather_facts: no
+  connection: local
+  
+  tasks: 
+  - name: Update a catalog item in ServiceNow
+    snow_record:
+      state: present
+      number: "{{ ticket_number }}"
+      table: sc_request
+      data:
+        request_state: "closed complete"
