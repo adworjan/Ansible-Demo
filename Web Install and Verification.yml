@@ -51,6 +51,7 @@
       data:
         email_body: "Web address is http://{{ ansible_host }}/index.html"
         email_subject: "Ansible VM Web Link"
+        work_notes: "Web address is http://{{ ansible_host }}/index.html"
 
   handlers:
     - name: httpd_running
