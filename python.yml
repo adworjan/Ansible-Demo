@@ -1,0 +1,6 @@
+- name: Run Python Script
+  hosts: all
+
+  tasks: 
+    - name: Run script
+      script: Simple.py 
