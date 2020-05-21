@@ -8,5 +8,6 @@
     snow_record:
       state: present
       number: "{{ ticket_number }}"
+      table: sc_request
       data:
         request_state: "closed_complete"
