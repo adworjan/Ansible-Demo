@@ -4,7 +4,7 @@
   connection: local
   
   tasks: 
-  - name: Update a catalog item in ServiceNow
+  - name: Update a catalog work notes and state in ServiceNow
     snow_record:
       state: present
       number: "{{ ticket_number }}"
@@ -14,7 +14,7 @@
         work_notes: "{{ work_notes }}"
     when: request_state is defined
 
-  - name: Update a catalog item in ServiceNow
+  - name: Update a catalog work notes only in ServiceNow
     snow_record:
       state: present
       number: "{{ ticket_number }}"
