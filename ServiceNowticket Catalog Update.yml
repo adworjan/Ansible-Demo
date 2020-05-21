@@ -11,3 +11,4 @@
       table: sc_request
       data:
         request_state: "closed_complete"
+        work_notes: "working on it"
