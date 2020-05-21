@@ -23,4 +23,4 @@
         data:
           work_notes: "{{ work_notes }}"
       when: request_state is not defined
-  when: ticket_number == ''
+  when: ticket_number != ''
