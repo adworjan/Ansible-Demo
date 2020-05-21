@@ -10,5 +10,5 @@
       number: "{{ ticket_number }}"
       table: sc_request
       data:
-        request_state: "closed_complete"
-        work_notes: "working on it"
+        request_state: "{{ request_state }}"
+        work_notes: "{{ work_notes }}"
